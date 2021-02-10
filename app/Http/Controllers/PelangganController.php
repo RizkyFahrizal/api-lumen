@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kategori;
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 
-class KategoriController extends Controller
+class PelangganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $data = kategori::all();
+        $data = Pelanggan::all();
         return response()->json($data);
     }
 
@@ -25,8 +25,8 @@ class KategoriController extends Controller
      */
     public function create(Request $request)
     {
-        kategori::create($request->all());
-        return response()->json("data kategori berhasil dimasukan");
+        Pelanggan::create($request->all());
+        return response()->json("data pelanggan berhasil dimasukan");
     }
 
     /**
@@ -43,22 +43,22 @@ class KategoriController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\kategori  $kategori
+     * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $data = kategori::where('idkategori', $id)->get();
+        $data = pelanggan::where('idpelanggan', $id)->get();
         return response()->json($data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\kategori  $kategori
+     * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategori $kategori)
+    public function edit(Pelanggan $pelanggan)
     {
         //
     }
@@ -67,23 +67,23 @@ class KategoriController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\kategori  $kategori
+     * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kategori $kategori)
+    public function update(Request $request, Pelanggan $pelanggan)
     {
-        return response()->json("ini adalah update kategori json $kategori");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\kategori  $kategori
+     * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        kategori::where('idkategori', $id)->delete();
-        return response()->json("data kategori sudah di hapus");
+        pelanggan::where('idpelanggan', $id)->delete();
+        return response()->json("data pelanggansudah di hapus");
     }
 }

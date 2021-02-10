@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\kategori;
+use App\Models\Pelanggan;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
 use Faker\Factory as Faker;
 
-class KategoriSeeder extends Seeder
+class PelangganSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,10 +21,11 @@ class KategoriSeeder extends Seeder
 
         for ($i = 0; $i < 20; $i++) {
             $data = [
-                'kategori' => $faker->name,
-                'keterangan' => $faker->text,
+                'pelanggan' => $faker->name,
+                'alamat' => $faker->address,
+                'telp' => $faker->phoneNumber,
             ];
-            Kategori::create($data);
+            Pelanggan::create($data);
         }
     }
 }
