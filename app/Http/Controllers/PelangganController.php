@@ -32,7 +32,13 @@ class PelangganController extends Controller
         ]);
 
         $pelanggan = Pelanggan::create($request->all());
-        return response()->json($pelanggan);
+
+        if ($pelanggan) {
+            return response()->json([
+                'pesan' => 'data pelanggan sudah ditambahkan',
+                'data' => $pelanggan
+            ]);
+        }
     }
 
     /**
@@ -78,8 +84,13 @@ class PelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        pelanggan::where('idpelanggan', $id)->update($request->all());
-        return response()->json("update pelanggan ke-$id sukses");
+        $pelanggan = pelanggan::where('idpelanggan', $id)->update($request->all());
+        if ($pelanggan) {
+            return response()->json([
+                'pesan' => "data ke-$id telah di update",
+                'data' => $pelanggan
+            ]);
+        }
     }
 
     /**
@@ -90,7 +101,12 @@ class PelangganController extends Controller
      */
     public function destroy($id)
     {
-        pelanggan::where('idpelanggan', $id)->delete();
-        return response()->json("data pelanggansudah di hapus");
+        $pelanggan = pelanggan::where('idpelanggan', $id)->delete();
+        if ($pelanggan) {
+            return response()->json([
+                'pesan' => "Data id-$id sudah dihapus",
+                'data' => $pelanggan
+            ]);
+        }
     }
 }

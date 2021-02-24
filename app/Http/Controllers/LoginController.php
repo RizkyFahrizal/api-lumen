@@ -36,7 +36,7 @@ class LoginController extends Controller
             ]);
 
             return response()->json([
-                'pesan' => 'login barhasil',
+                'pesan' => 'login berhasil',
                 'token' => $token,
                 'data' => $user,
             ]);
