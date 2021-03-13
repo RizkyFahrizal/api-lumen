@@ -18,9 +18,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('api/register', ['uses' => 'LoginController@register']);
-
 $router->post('api/login', ['uses' => 'LoginController@login']);
-
 $router->get('api/kategori', ['uses' => 'KategoriController@index']);
 
 
@@ -38,5 +36,8 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
     $router->post('pelanggan', ['uses' => 'pelangganController@create']);
 
     $router->get('menu', ['uses' => 'MenuController@index']);
+    $router->get('menu/{id}', ['uses' => 'MenuController@show']);
+    $router->delete('menu/{id}', ['uses' => 'MenuController@destroy']);
+    $router->post('menu/{id}', ['uses' => 'MenuController@update']);
     $router->post('menu', ['uses' => 'MenuController@create']);
 });
