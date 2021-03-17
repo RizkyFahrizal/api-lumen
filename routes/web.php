@@ -40,4 +40,8 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
     $router->delete('menu/{id}', ['uses' => 'MenuController@destroy']);
     $router->post('menu/{id}', ['uses' => 'MenuController@update']);
     $router->post('menu', ['uses' => 'MenuController@create']);
+
+    $router->get('order', ['uses' => 'OrderController@index']);
+    $router->get('order/{a}/{b}', ['uses' => 'OrderController@show']);
+    $router->put('order/{id}', ['uses' => 'OrderController@update']);
 });
