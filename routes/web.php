@@ -44,4 +44,9 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
     $router->get('order', ['uses' => 'OrderController@index']);
     $router->get('order/{a}/{b}', ['uses' => 'OrderController@show']);
     $router->put('order/{id}', ['uses' => 'OrderController@update']);
+
+    $router->get('detail/{a}/{b}', ['uses' => 'DetailController@show']);
+
+    $router->get('user', ['uses' => 'LoginController@index']);
+    $router->put('user/{id}', ['uses' => 'LoginController@update']);
 });
