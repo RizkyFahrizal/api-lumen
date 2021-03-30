@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -20,7 +21,7 @@ class LoginController extends Controller
     {
         $data = [
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
+            'password' => Hash::make($request->input('password')),
             'level' => $request->input('level'),
             'api_token' => '12345',
             'status' => '1',
@@ -37,7 +38,7 @@ class LoginController extends Controller
 
         if (isset($user)) {
             if ($user->status === 1) {
-                if ($user->password === $password) {
+                if (Hash::check($password, $user->password)) {
                     $token = Str::random(20);
 
                     $user->update([
